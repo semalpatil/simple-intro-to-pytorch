@@ -1,4 +1,4 @@
-# A Practical Introduction to Learning ML using Pytorch
+# An Introduction to ML using PyTorch
 
 This is a simple introduction to Machine Learning using Pytorch. Before using Pytorch, we will first take a quick look at linear regression using Scikit-Learn a machine learning toolkit, based on a traditional non-neural net approach. This will give you a good idea about the problem we are trying to solve, and help you understand the Pytorch code easily.
 
