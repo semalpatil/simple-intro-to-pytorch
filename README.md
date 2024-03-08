@@ -6,7 +6,7 @@ This is a simple introduction to Machine Learning using Pytorch. Before using Py
 
 
 
-As we know the equation of a line is: <br/> $y = mX + c$ <br/> where **m** is the slope of the line and **c** is the constant or the intercept. In machine learning terminology the _m_ is usually represented as a weight or **w** and _C_ is represented as a bias **b**. <br/> _*Linear Regression*_ is a statistical process for determining a line that best fits the given data, so that we can predict the output for any other unseen input values.
+As we know the equation of a line is: <br/> $`y = mX + c`$ <br/> where **m** is the slope of the line and **c** is the constant or the intercept. In machine learning terminology the _m_ is usually represented as a weight or **w** and _C_ is represented as a bias **b**. <br/> _*Linear Regression*_ is a statistical process for determining a line that best fits the given data, so that we can predict the output for any other unseen input values.
 
 Most of the tutorials out there, start with some dataset and try to fit the data. This is a good approach, as in real life you will generally not find any dataset that perfectly follows an equation. But most datasets in real life must be pre-processed before it can be used. But all that pre-processing, adds some overhead to the program and we may get distracted from the important part of the code. Hence here we will just syntesize our own data and compare the, "w" and "b" which we alrady know, with scikit learn model parameters after its done training.
 
