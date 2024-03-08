@@ -13,7 +13,7 @@ Most of the tutorials out there, start with some dataset and try to fit the data
 
 Let us assume that the value of m is 1.29 and c is 24. In that case we can define our function to generate the desired value of y based on a value of x as follows:
 <br/>
-$y = 1.29x + 24 $
+$`y = 1.29x + 24 `$ 
 
 Let us use numpy to create random values. We will then define a function to synthesize the output based on the input.
 To create our output _y_ values ( a.k.a _labels_ ) we can use the list comprehension syntax to generate lots of y values corresponding to the input x values.
@@ -58,7 +58,7 @@ print(f"Bias (Constant) : {lm.intercept_}")
 
 As you can see here that sklearn finds the coefficient a.k.a weight and the bias correctly, so we need again verify the results with some input.
 In real life problems though, we do not always have just one feature or variable, we will typically have many varibles. But the linear regression problem remains almost the same and the solution can be extended to multiple variables very easily. Here we are using 4 input variables, numpy helps us to create 50000 random values for each of these 4 variables. Since we have 4 input variables we will obviously have 4 weights. Let us say that the weights are, 1.9, 2.22, 3.1 and 1.29. The b is the same as last time i.e. 13. So our compute_output function can now be mathematically represented as : <br>
-$$ y = 1.29 x_{1} + 3.1 x_{2} + 2.22x_{3} + 1.9x_{4}+13 $$
+$` y = 1.29 x_{1} + 3.1 x_{2} + 2.22x_{3} + 1.9x_{4}+13 `$
 
 
 ```python
@@ -88,10 +88,10 @@ print(lm.intercept_)
 
 Now if you are anything like me your first obvious reaction will be, "Wait, when we are solving any real life problem, what is the guarantee that the relation between input and output is always linear, what if y depends on the $5^{th}$ power of some input variable". It turns out that even that problem is very similar and simple.
 Let us consider a single variable problem that involves a higher power of the input variable.
-  $y = mx^{3} + c$  </br>
+  $`y = mx^{3} + c`$  </br>
  OR in Python syntax  **y = 5.2 * x ** 3 + 31**
 
-   The trick here is to synthesize multiple variables from a single variable, using powers. For example even if we know that there is only one input variable x, we can say that this equation really has 4 input varibles, x, $x^{2}$, $x^{3}$, $x^{4}$ . If you are really paying attention, you may ask "why $x^{4}$ ?". I am just trying to emphasize the point that in real life scenarios you may not know if the relation between input involves a power of 3 or power of 4. So let us take a guess and let us go with 4. Any powers that are not involved will get an almost ZERO coefficient and hence will not be used. So if you really think, now its again the same problem as above; it is a simple linear regression with 4 input variables. We will first see the non sklearn way of achieving it and the use the proper sklearn way of doing the same thing.
+   The trick here is to synthesize multiple variables from a single variable, using powers. For example even if we know that there is only one input variable x, we can say that this equation really has 4 input varibles, x, $`x^{2}`$, $`x^{3}`$, $`x^{4}`$ . If you are really paying attention, you may ask "why $`x^{4}`$ ?". I am just trying to emphasize the point that in real life scenarios you may not know if the relation between input involves a power of 3 or power of 4. So let us take a guess and let us go with 4. Any powers that are not involved will get an almost ZERO coefficient and hence will not be used. So if you really think, now its again the same problem as above; it is a simple linear regression with 4 input variables. We will first see the non sklearn way of achieving it and the use the proper sklearn way of doing the same thing.
 
 
 ```python
@@ -132,7 +132,7 @@ print(f'The Bias: {lm.intercept_}')
     The Bias: [31.01233]
     
 
-Notice that the coefficients or weights of the other power are a really small numbers something like -4.7960515e-07 ( something with a $ 10^{-7}$ which is a really small number). Which simply means that this power is inconsequential or simply not present in the actual equation that describes relation between input and output. As you can see it found out the coefficient of $ x^{3}$ correctly.
+Notice that the coefficients or weights of the other power are a really small numbers something like -4.7960515e-07 ( something with a $` 10^{-7}`$ which is a really small number). Which simply means that this power is inconsequential or simply not present in the actual equation that describes relation between input and output. As you can see it found out the coefficient of $` x^{3}`$ correctly.
 Now one last bit from the Sklearn world before we jump into the deep downword slope of gradient descent; sklearn preproceesing offers a nicer way of expanding the features from a single variable to multiple variables using the powers. Here is the proper sklearn way
 
 
@@ -190,11 +190,11 @@ Here we start with some random values for weight and bias.
 Since the difference between the predicted value and the actual value can either be negative or positive, we will take the square of the difference between the predicted value and the actual value, which will always yield a +ve number. Since we have lots of predicted values and actual values, we will take the mean of the square of the difference between predicted and actual values. This is how we define our loss function.
 
 We already know that : <br/><font size="4" color="blue">
-    $ y_{predicted} = ( x_{train} w ) + b $ </font>
+   $` y_{predicted} = ( x_{train} w ) + b `$ </font>
     
  and if we ignore the mean for the timebeing then the loss function is:<br/>
     <font size="4" color="blue">
-   $ loss =   (y_{predicted} - y_{train}) ^{2} $
+   $` loss =   (y_{predicted} - y_{train}) ^{2} `$
    </font>
     
 So if we replace the value of $y_{predicted}$ in the loss function and use the expansion formulae for the square; <br/><br/>
@@ -205,36 +205,36 @@ $(a+b) ^{2} = a^{2} + 2ab + b^{2}$,
 </font>
 <br/><br/>We get the folllwing :
 <br/><b>Step 1:</b><br/><font size="4" color="blue">
-$y_{predicted}^{2} - 2y_{predicted}y_{train} + y_{train}^{2} $ <br/>
+$`y_{predicted}^{2} - 2y_{predicted}y_{train} + y_{train}^{2} `$ <br/>
 </font>
 <br/><b>Step 2:</b><br/>
 <font size="4" color="blue">
-$ (x_{train}w + b )^{2} - 2((x_{train}w + b )y_{train}) + y_{train}^{2} $ <br/>
+$` (x_{train}w + b )^{2} - 2((x_{train}w + b )y_{train}) + y_{train}^{2} `$ <br/>
 </font>
 <br/><b>Step 3:</b><br/>
 <font size="4" color="blue">
-$ loss = (x_{train}w)^{2}+2x_{train}wb + b^{2} - 2(x_{train}w + b )y_{train}) + y_{train}^{2} $ <br/><br/>
+$` loss = (x_{train}w)^{2}+2x_{train}wb + b^{2} - 2(x_{train}w + b )y_{train}) + y_{train}^{2} `$ <br/><br/>
 </font>
 
 So that is our actual loss function, now as you might have read the goal is to reduce the loss by tweaking the w and b. This is where the gradient descent comes into picture. Usually when we talk about derivatives or differentiation, we are finding the derivative of a function with respect to the variable x. That is not the case here and hence may be a bit tricky to grasp at first. Our variables are the weight "w" and the bias "b". So we will be differentiating the above loss function first with respect to w and then with respect to b.
-<br/> So basically we are trying to find out these two quantities $  \frac {dloss} {dw}  $
-and $  \frac {dloss} {db} $
+<br/> So basically we are trying to find out these two quantities $`  \frac {dloss} {dw}  `$
+and $`  \frac {dloss} {db} `$
 <br/> Now take a pen and paper and try to actually find out the differentiation yourself, dont just take my word for it. So the derivative of loss with respect to w turns out to be the following: <br/><br/>
 <font size="4" color="blue">
-    $ \frac{dloss}{dw} = 2 (x_{train})^{2}w + 2x_{train}b - 2x_{train}y_{train} $
+    $` \frac{dloss}{dw} = 2 (x_{train})^{2}w + 2x_{train}b - 2x_{train}y_{train} `$
 </font>
 <br/><br/> If you take out the common $ 2 x_{train}$ then it becomes: <br/><br/>
 <font size="4" color="blue">
-$ \frac{dloss}{dw} = 2 (x_{train}) ( x_{train}w + b - y_{train} ) $ <br/>
+$` \frac{dloss}{dw} = 2 (x_{train}) ( x_{train}w + b - y_{train} ) `$ <br/>
 </font>
-</br> if you replace the $x_{train}w + b $ with the $ y_{predicted} $ and you get this: <br/><br/>
+</br> if you replace the $`x_{train}w + b $ with the $ y_{predicted} `$ and you get this: <br/><br/>
 <font size="4" color="blue">
-$ \frac{dloss}{dw} = 2 x_{train} ( y_{predicted} - y_{train} ) $ <br/><br/></font>
+$` \frac{dloss}{dw} = 2 x_{train} ( y_{predicted} - y_{train} ) `$ <br/><br/></font>
 In Python code it will look something like this: <br/><br/>
  w_grad = (2 * (y_pred - y_train) * x_train ).mean()
   <br/> <br/>Similarly if you try to solve the other differentiation you will end up with this: <br/>
 <font size="4" color="blue">
-$  \frac {dloss} {db}  = 2 (y_{predicted} - y_{train})$
+$`  \frac {dloss} {db}  = 2 (y_{predicted} - y_{train})`$
 </font>
 <br/><br/> In Python code it will be as follows: <br/><br/>
    b_grad = (2 * (y_pred - y_train) ).mean()
