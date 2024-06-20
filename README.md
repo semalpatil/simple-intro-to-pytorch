@@ -223,7 +223,7 @@ and $`  \frac {dloss} {db} `$
 <font size="4" color="blue">
     $` \frac{dloss}{dw} = 2 (x_{train})^{2}w + 2x_{train}b - 2x_{train}y_{train} `$
 </font>
-<br/><br/> If you take out the common $ 2 x_{train}$ then it becomes: <br/><br/>
+<br/><br/> If you take out the common $` 2 x_{train}`$ then it becomes: <br/><br/>
 <font size="4" color="blue">
 $` \frac{dloss}{dw} = 2 (x_{train}) ( x_{train}w + b - y_{train} ) `$ <br/>
 </font>
