@@ -231,14 +231,17 @@ $` \frac{dloss}{dw} = 2 (x_{train}) ( x_{train}w + b - y_{train} ) `$ <br/>
 <font size="4" color="blue">
 $` \frac{dloss}{dw} = 2 x_{train} ( y_{predicted} - y_{train} ) `$ <br/><br/></font>
 In Python code it will look something like this: <br/><br/>
+```python
  w_grad = (2 * (y_pred - y_train) * x_train ).mean()
+```
   <br/> <br/>Similarly if you try to solve the other differentiation you will end up with this: <br/>
 <font size="4" color="blue">
 $`  \frac {dloss} {db}  = 2 (y_{predicted} - y_{train})`$
 </font>
 <br/><br/> In Python code it will be as follows: <br/><br/>
+```python
    b_grad = (2 * (y_pred - y_train) ).mean()
-
+```
 
 
 
