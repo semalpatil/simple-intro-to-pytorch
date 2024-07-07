@@ -8123,9 +8123,7 @@ Bias: [[23.99864154]]
     <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
         <span class="n">w</span> <span class="o">-=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">w_grad</span>
         <span class="n">b</span> <span class="o">-=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">b_grad</span>
-
-    <span class="c1"># what about reseting the gradients to zero ?</span>
-
+   
 <span class="c1">#finally check the weight and bias</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">Weights: </span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s2"> </span><span class="se">\n\n</span><span class="s2">Bias: </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
@@ -8163,8 +8161,8 @@ Bias: tensor([[23.9987]], requires_grad=True)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Notice that both Weight and Bias are tensors themselves. If you want to get the actual value of a tensor and if you know that it has only 1 element then you can use the item() method.</p><br/>
-<p>Here we were still trying to compute gradient manually, now we will start using the proper Pytorch way. We will actually start using some of the basic Neural Network constructs from Pytorch. The linear transformation provided by torch.nn.Linear can maintain its own weights and bias internally. First we will start by using its internal weight but not the bias.</p>
+<p>Notice that both Weight and Bias are tensors themselves. If you want to get the actual value of a tensor and if you know that it has only 1 element then you can use the item() method.</p>
+<p>In the example above, even though we were using Pytorch and tensors, we were still trying to compute gradient manually. The whole point of using tensors is it's Autograd feature. In our example the requires_grad property of the X_train and Y_train was set to "False".Now we will start using the Autograd feature which is the proper Pytorch way and we will also start using some of the basic Neural Network constructs from Pytorch. Instead of we maintaining two tensors for weight and bias, the linear transformation provided by torch.nn.Linear can maintain its own weights and bias internally. First we will start by using its internal weight but not the bias.</p>
 </div>
 </div>
 </div>
